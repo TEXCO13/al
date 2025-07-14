@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>히히히하</title>
+    <style>
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>히히히하</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            background-color: black;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            width: 100vw;
+            height: 100vh;
+            background-color: black;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            animation: changeColors 0.04s infinite;
+        }
+
+        @keyframes changeColors {
+            0% { background-color: black; }
+            50% { background-color: white; }
+            100% { background-color: black; }
+        }
+
+        /* 모든 클릭을 차단하는 투명한 레이어 */
+        #clickBlocker {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5); /* 반투명 */
+            z-index: 9999;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div id="clickBlocker"></div> <!-- 클릭을 막는 투명한 레이어 -->
+    </div>
+
+    <script>
+        // 클릭을 막고, 본인 사이트로 이동
+        document.getElementById('clickBlocker').addEventListener('click', function(event) {
+            // 클릭한 곳이 투명한 레이어이므로, 아무 동작도 하지 않도록
+            event.preventDefault();
+            event.stopPropagation();
+
+            // 엑스 버튼을 클릭하려 하면, 현재 사이트로 이동 (reload)
+            window.location.href = window.location.href; // 현재 페이지로 리다이렉트
+        });
+
+        // 창을 닫을 수 없도록 막기 (Alt + F4나 창 닫기 버튼도 막기)
+        window.addEventListener('beforeunload', function(event) {
+            event.preventDefault(); // 기본 동작 막기
+            event.returnValue = '';  // 일부 브라우저에서 경고창을 띄우기 위해 필요
+        });
+    </script>
+
+</body>
+</html>
